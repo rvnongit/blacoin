@@ -1,0 +1,26 @@
+import requests
+import json
+import xmltodict 
+response = requests.get("https://bittrex.com/api/v1.1/public/getmarkets")
+response_text = response.text
+#dlist = response.content()
+for elem in json.loads(response_text)['result']:
+    for k,v in elem.items():
+        if 'Verium' in str(k) or 'Verium' in str(v):
+            print(elem)
+    print(elem)
+exit(0)
+#if any()
+'''
+[{a='b',...},{a='b',...},{a='b',...}]  #json.loads
+[] = list
+{} = dictionary #elemone = 'eins', elemtwo='zwei'
+elem['MarketCurrency']
+'''
+user_input = str(input('Enter coin: '))
+
+coin = user_input
+
+if coin in response_text:
+    print("price")
+
